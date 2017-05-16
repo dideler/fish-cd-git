@@ -13,7 +13,7 @@ set --erase GH_BASE_DIR
 set --universal --export GH_BASE_DIR $HOME
 ```
 
-Navigate to a repository (will clone if neded):
+Navigate to a repository (will clone if missing):
 ```
 gh dideler fish-cd-git
 ```
