@@ -18,10 +18,10 @@ Install with your favourite fish package manager, such as [fisherman][]
 fisher install dideler/fish-cd-git
 ```
 
-Optional: Set your preferred location to store projects (default is `$HOME/src`)
+Optional: Set your preferred location for the `github.com` directory (default is `$HOME`)
 ```
 set --erase GH_BASE_DIR
-set --universal --export GH_BASE_DIR $HOME
+set --universal --export GH_BASE_DIR $HOME/src
 ```
 
 Navigate to any GitHub-hosted repository :sparkles:
