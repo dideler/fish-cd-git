@@ -1,4 +1,4 @@
-# fish-cd-git
+# fish-cd-git [![CircleCI](https://circleci.com/gh/dideler/fish-cd-git.svg?style=svg)](https://circleci.com/gh/dideler/fish-cd-git)
 
 A super handy repository navigator for the [fish shell][].
 
