@@ -1,13 +1,9 @@
 function __gh_setup
-  if set --query _
-    set --global gh_cmd_name $_
-  else
-    set --global gh_cmd_name gh
-  end
+  set --query _; and set --global gh_cmd_name $_
+  or set --global gh_cmd_name gh
 
-  if not set --query GH_BASE_DIR
-    set --universal GH_BASE_DIR $HOME
-  end
+  set --query GH_BASE_DIR
+  or set --universal GH_BASE_DIR $HOME
 end
 
 function __gh_print_usage
