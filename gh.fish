@@ -1,17 +1,27 @@
-if not set --query GH_BASE_DIR
-  set --universal GH_BASE_DIR $HOME
+function __gh_setup
+  if set --query _
+    set --global gh_cmd_name $_
+  else
+    set --global gh_cmd_name gh
+  end
+
+  if not set --query GH_BASE_DIR
+    set --universal GH_BASE_DIR $HOME
+  end
 end
 
 function __gh_print_usage
-  printf "Usage: $_ [--help] USER REPO\n\n"
+  printf "Usage: $gh_cmd_name [--help] USER REPO\n\n"
   printf "Description:\n"
   printf "    Quickly navigate across git repositories cloned from GitHub.\n"
   printf "    Searches within $GH_BASE_DIR/github.com/. Clones repo if not found.\n\n"
   printf "Examples:\n"
-  printf "    $_ dideler fish-cd-git\n"
+  printf "    $gh_cmd_name dideler fish-cd-git\n"
 end
 
 function gh -d "Navigate to cloned repos from github.com" -a user repo
+  __gh_setup
+
   set -l argc (count $argv)
 
   if contains -- -h $argv; or contains -- --help $argv
