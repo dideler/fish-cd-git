@@ -28,7 +28,7 @@ function gh -d "Navigate to cloned repos from github.com" -a user repo
     set user $user_repo[1]
     set repo $user_repo[2]
   else if test $argc -ne 2
-    printf "Error: %s expected 2 arguments, got %d\n\n" $_ $argc
+    printf "Error: %s expected 2 arguments, got %d\n\n" $gh_cmd_name $argc
     __gh_print_usage
     return 1
   end
