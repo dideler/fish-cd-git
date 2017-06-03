@@ -15,9 +15,9 @@ function __gh_print_usage
   printf "    $gh_cmd_name dideler fish-cd-git\n"
 end
 
-function gh -d "Navigate to cloned repos from github.com" -a user repo
-  __gh_setup
+__gh_setup
 
+function $gh_cmd_name -d "Navigate to cloned repos from github.com" -a user repo
   set -l argc (count $argv)
 
   if contains -- -h $argv; or contains -- --help $argv
