@@ -1,6 +1,6 @@
 function __gh_setup
   set --query _; and set --global gh_cmd_name $_
-  or set --global gh_cmd_name gh
+  or set --global gh_cmd_name (basename (status --current-filename) .fish)
 
   set --query GH_BASE_DIR
   or set --universal GH_BASE_DIR $HOME
