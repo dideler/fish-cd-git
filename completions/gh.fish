@@ -1,5 +1,5 @@
 if not set --query GH_BASE_DIR
-  set GH_BASE_DIR $HOME/src
+  set GH_BASE_DIR $HOME
 end
 
 function __gh_user_completion
