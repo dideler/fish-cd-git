@@ -4,15 +4,24 @@ function __gh_setup
 
   set --query GH_BASE_DIR
   or set --universal GH_BASE_DIR $HOME
+
+  set --global gh_version "1.0.0"
 end
 
 function __gh_print_usage
-  printf "Usage: $gh_cmd_name [--help] USER REPO\n\n"
+  printf "Usage: $gh_cmd_name [OPTION] USER REPO\n\n"
   printf "Description:\n"
   printf "    Quickly navigate across git repositories cloned from GitHub.\n"
   printf "    Searches within $GH_BASE_DIR/github.com/. Clones repo if not found.\n\n"
   printf "Examples:\n"
-  printf "    $gh_cmd_name dideler fish-cd-git\n"
+  printf "    $gh_cmd_name dideler fish-cd-git\n\n"
+  printf "Options:\n"
+  printf "    -h, --help      Prints this help\n"
+  printf "    -v, --version   Prints the $gh_cmd_name version\n"
+end
+
+function __gh_print_version
+  echo "$gh_cmd_name version $gh_version"
 end
 
 __gh_setup
@@ -22,6 +31,9 @@ function $gh_cmd_name -d "Navigate to cloned repos from github.com" -a user repo
 
   if contains -- -h $argv; or contains -- --help $argv
     __gh_print_usage
+    return 0
+  else if contains -- -v $argv; or contains -- --version $argv
+    __gh_print_version
     return 0
   else if test $argc -eq 1  # Attempt to autocorrect "user/repo" input.
     set --local user_repo (__gh_parse_args $user)
