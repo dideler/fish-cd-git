@@ -46,3 +46,11 @@ test "prints error and help to stderr when given too many arguments"
   "" \
   $help = (gh foo bar baz 2>&1)
 end
+
+test "exits with status code 1 on option error"
+  1 = (gh --foo ^/dev/null; echo $status)
+end
+
+test "exits with status code 1 on argument error"
+  1 = (gh ^/dev/null; echo $status)
+end
