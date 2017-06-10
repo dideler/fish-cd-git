@@ -12,7 +12,7 @@ function __gh_repo_completion
   ls $GH_BASE_DIR/github.com/$user
 end
 
-complete --command gh --short h --long help --description 'Show description and usage information'
-complete --command gh --short v --long version --description 'Show version information'
+complete --command gh --short h --long help --description 'Display help'
+complete --command gh --short v --long version --description 'Display version'
 complete --command gh --condition '__fish_is_token_n 2' --arguments '(__gh_user_completion)' --no-files
 complete --command gh --condition '__fish_is_token_n 3' --arguments '(__gh_repo_completion)' --no-files

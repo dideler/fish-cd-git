@@ -8,8 +8,8 @@ set -l help "Usage: gh [OPTION] USER REPO" \
             "    gh dideler fish-cd-git" \
             "" \
             "Options:" \
-            "    -h, --help      Prints this help" \
-            "    -v, --version   Prints the gh version and license"
+            "    -h, --help      Prints help information" \
+            "    -v, --version   Prints the gh version"
 
 set -l version "gh version 1.0.0"
 
@@ -29,20 +29,20 @@ test "prints version when given --version option"
   $version = (gh --version)
 end
 
-test "prints error and help when given invalid option"
+test "prints error and help to stderr when given invalid option"
   "Error: '--foo' is not a valid option" \
   "" \
-  $help = (gh --foo)
+  $help = (gh --foo 2>&1)
 end
 
-test "prints error and help when given no arguments"
+test "prints error and help to stderr when given no arguments"
   "Error: gh expected 2 arguments, got 0" \
   "" \
-  $help = (gh)
+  $help = (gh 2>&1)
 end
 
-test "prints error and help when given too many arguments"
+test "prints error and help to stderr when given too many arguments"
   "Error: gh expected 2 arguments, got 3" \
   "" \
-  $help = (gh foo bar baz)
+  $help = (gh foo bar baz 2>&1)
 end

@@ -16,7 +16,7 @@ function __gh_print_usage
   printf "Examples:\n"
   printf "    $gh_cmd_name dideler fish-cd-git\n\n"
   printf "Options:\n"
-  printf "    -h, --help      Prints this help\n"
+  printf "    -h, --help      Prints help information\n"
   printf "    -v, --version   Prints the $gh_cmd_name version\n"
 end
 
@@ -27,25 +27,30 @@ end
 __gh_setup
 
 function $gh_cmd_name -d "Navigate to cloned repos from github.com" -a user repo
-  set -l argc (count $argv)
+  set --local argc (count $argv)
 
-  if contains -- -h $argv; or contains -- --help $argv
-    __gh_print_usage
-    return 0
-  else if contains -- -v $argv; or contains -- --version $argv
-    __gh_print_version
-    return 0
-  else if test $argc -eq 1  # Attempt to autocorrect "user/repo" input.
-    set --local user_repo (__gh_parse_args $user)
-    set user $user_repo[1]
-    set repo $user_repo[2]
-  else if test $argc -ne 2
-    printf "Error: %s expected 2 arguments, got %d\n\n" $gh_cmd_name $argc
-    __gh_print_usage
+  if test $argc -lt 1 -o $argc -gt 2
+    printf "Error: %s expected 2 arguments, got %d\n\n" $gh_cmd_name $argc 1>&2
+    __gh_print_usage 1>&2
     return 1
   end
 
-  __gh_cd_git_repo github.com $user $repo
+  switch $argv[1]
+    case '-h' '--help'
+      __gh_print_usage
+      return 0
+
+    case '-v' '--version'
+      __gh_print_version
+      return 0
+
+    case '-*'
+      printf "Error: '%s' is not a valid option\n\n" $argv[1] 1>&2
+      __gh_print_usage 1>&2
+      return 1
+  end
+
+  # TODO: navigate to repo
 end
 
 function __gh_cd_git_repo --argument git_host user repo
