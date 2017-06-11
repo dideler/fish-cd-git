@@ -50,7 +50,7 @@ function $gh_cmd_name -d "Navigate to cloned repos from github.com" -a user repo
       return 1
   end
 
-  # TODO: navigate to repo
+  __gh_cd_git_repo github.com $user $repo
 end
 
 function __gh_cd_git_repo --argument git_host user repo
