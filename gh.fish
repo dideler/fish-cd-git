@@ -50,7 +50,12 @@ function $gh_cmd_name -d "Navigate to cloned repos from github.com" -a user repo
       return 1
   end
 
-  __gh_cd_git_repo github.com $user $repo
+  if test $argc -eq 1
+    set --local user_repo (__gh_autocorrect_user_repo $user)
+    and __gh_cd_git_repo github.com $user_repo[1] $user_repo[2]
+  else
+    __gh_cd_git_repo github.com $user $repo
+  end
 end
 
 function __gh_cd_git_repo --argument git_host user repo
@@ -62,6 +67,13 @@ end
 
 function __gh_clone_repo_if_missing --argument path git_host user repo
   test -d $path; or command git clone -q git@$git_host:$user/$repo.git $path
+end
+
+# Returns "user" "repo" list when given " user/repo " as input.
+function __gh_autocorrect_user_repo --argument user_repo
+  set --local captures (string match -r "(.+)/(.+)" (string trim $user_repo))
+  and echo $captures[2]
+  and echo $captures[3]
 end
 
 function __gh_parse_args --argument user_repo

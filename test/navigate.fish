@@ -8,9 +8,16 @@ function teardown -S
   rm -rf (dirname $repo_path)
 end
 
-test "navigates to the given user/repo directory"
+test "navigates to existing directory when given user repo"
   (
     gh gh_user gh_repo
+    pwd
+  ) = "$HOME/github.com/gh_user/gh_repo"
+end
+
+test "navigates to existing directory when given user/repo"
+  (
+    gh gh_user/gh_repo
     pwd
   ) = "$HOME/github.com/gh_user/gh_repo"
 end
