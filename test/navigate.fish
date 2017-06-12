@@ -21,3 +21,10 @@ test "navigates to existing directory when given user/repo"
     pwd
   ) = "$HOME/github.com/gh_user/gh_repo"
 end
+
+test "navigates to existing directory when given user"
+  (
+    gh gh_user
+    pwd
+  ) = "$HOME/github.com/gh_user"
+end

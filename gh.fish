@@ -53,6 +53,7 @@ function $gh_cmd_name -d "Navigate to cloned repos from github.com" -a user repo
   if test $argc -eq 1
     set --local user_repo (__gh_autocorrect_user_repo $user)
     and __gh_cd_git_repo github.com $user_repo[1] $user_repo[2]
+    or cd $GH_BASE_DIR/github.com/$user
   else
     __gh_cd_git_repo github.com $user $repo
   end
