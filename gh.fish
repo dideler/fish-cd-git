@@ -67,7 +67,8 @@ function __gh_cd_git_repo --argument git_host user repo
 end
 
 function __gh_clone_repo_if_missing --argument path git_host user repo
-  test -d $path; or command git clone -q git@$git_host:$user/$repo.git $path
+  # TODO: `command git` once we can test it: https://github.com/fisherman/mock/issues/4
+  test -d $path; or git clone -q git@$git_host:$user/$repo.git $path
 end
 
 # Returns "user" "repo" list when given " user/repo " as input.
