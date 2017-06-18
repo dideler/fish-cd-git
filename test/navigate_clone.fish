@@ -13,3 +13,12 @@ test "navigates to cloned project when given user repo"
     pwd
   )
 end
+
+test "navigates to cloned project when given user/repo"
+  "$HOME/github.com/gh_user/gh_repo" = (
+    mock git 0 "test \"\$args\" = 'clone -q git@github.com:gh_user/gh_repo.git $repo_path'
+                and mkdir -p $repo_path"
+    gh gh_user/gh_repo
+    pwd
+  )
+end
