@@ -9,22 +9,22 @@ function teardown -S
 end
 
 test "navigates to existing directory when given user repo"
-  (
+  "$HOME/github.com/gh_user/gh_repo" = (
     gh gh_user gh_repo
     pwd
-  ) = "$HOME/github.com/gh_user/gh_repo"
+  )
 end
 
 test "navigates to existing directory when given user/repo"
-  (
+  "$HOME/github.com/gh_user/gh_repo" = (
     gh gh_user/gh_repo
     pwd
-  ) = "$HOME/github.com/gh_user/gh_repo"
+  )
 end
 
 test "navigates to existing directory when given user"
-  (
+  "$HOME/github.com/gh_user" = (
     gh gh_user
     pwd
-  ) = "$HOME/github.com/gh_user"
+  )
 end
