@@ -3,7 +3,7 @@ function __gh_setup
   or set --universal GH_BASE_DIR $HOME
 
   set --global gh_cmd_name (basename (status --current-filename) .fish)
-  set --global gh_version "1.0.0"
+  set --global gh_version "1.0.1"
 end
 
 function __gh_print_usage
