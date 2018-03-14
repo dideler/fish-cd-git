@@ -1,9 +1,12 @@
+# TODO: set common vars top-level or top-level gh func
+#       and use function -S/--no-scope-shadowing to inherit vars
+#       instead of making them global or parameters
 function __gh_setup
   set --query GH_BASE_DIR
   or set --universal GH_BASE_DIR $HOME
 
   set --global gh_cmd_name (basename (status --current-filename) .fish)
-  set --global gh_version "1.0.1"
+  set --global gh_version "1.0.2"
   set --global gh_git_host github.com
 end
 
