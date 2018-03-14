@@ -11,8 +11,6 @@ set -l help "Usage: gh [OPTION] USER REPO" \
             "    -h, --help      Prints help information" \
             "    -v, --version   Prints the gh version"
 
-set -l version "gh version 1.0.0"
-
 test "prints help when given -h option"
   $help = (gh -h)
 end
@@ -22,11 +20,11 @@ test "prints help when given --help option"
 end
 
 test "prints version when given -v option"
-  $version = (gh -v)
+  (string match --regex 'gh version \d.\d.\d' (gh -v)) = (gh -v)
 end
 
 test "prints version when given --version option"
-  $version = (gh --version)
+  (string match --regex 'gh version \d.\d.\d' (gh -v)) = (gh --version)
 end
 
 test "prints error and help to stderr when given invalid option"
