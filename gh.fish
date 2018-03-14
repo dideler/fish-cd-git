@@ -4,13 +4,14 @@ function __gh_setup
 
   set --global gh_cmd_name (basename (status --current-filename) .fish)
   set --global gh_version "1.0.1"
+  set --global gh_git_host github.com
 end
 
 function __gh_print_usage
   printf "Usage: $gh_cmd_name [OPTION] USER REPO\n\n"
   printf "Description:\n"
   printf "    Quickly navigate across git repositories cloned from GitHub.\n"
-  printf "    Searches within $GH_BASE_DIR/github.com/. Clones repo if not found.\n\n"
+  printf "    Searches within $GH_BASE_DIR/$gh_git_host/. Clones repo if not found.\n\n"
   printf "Examples:\n"
   printf "    $gh_cmd_name dideler fish-cd-git\n\n"
   printf "Options:\n"
@@ -24,7 +25,7 @@ end
 
 __gh_setup
 
-function $gh_cmd_name -d "Navigate to cloned repos from github.com" -a user repo
+function $gh_cmd_name -d "Navigate to cloned repos from $gh_git_host" -a user repo
   set --local argc (count $argv)
 
   if test $argc -lt 1 -o $argc -gt 2
@@ -50,10 +51,10 @@ function $gh_cmd_name -d "Navigate to cloned repos from github.com" -a user repo
 
   if test $argc -eq 1
     set --local user_repo (__gh_autocorrect_user_repo $user)
-    and __gh_cd_git_repo github.com $user_repo[1] $user_repo[2]
-    or cd $GH_BASE_DIR/github.com/$user
+    and __gh_cd_git_repo $gh_git_host $user_repo[1] $user_repo[2]
+    or cd $GH_BASE_DIR/$gh_git_host/$user
   else
-    __gh_cd_git_repo github.com $user $repo
+    __gh_cd_git_repo $gh_git_host $user $repo
   end
 end
 
