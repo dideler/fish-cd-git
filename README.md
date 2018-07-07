@@ -3,13 +3,17 @@
 A super handy repository navigator for the [fish shell][].
 
 - Keeps code neatly organised under the same namespace as GitHub's
-  (e.g. github.com/user/repo)
+  (i.e. github.com/user/repo)
 
 - Quickly jump between repos with auto-completion
 
 - Auto-clones the repo for you if it's missing
 
 - Inspired by https://github.com/dickeyxxx/gh
+
+## Demo
+
+![Example usage of fish-cd-git](https://user-images.githubusercontent.com/497458/42415491-4240ed94-8248-11e8-8ad3-ba19b01d626d.gif)
 
 ## Quick start
 
