@@ -18,7 +18,8 @@ Install with your favourite fish package manager, such as [fisherman][]
 fisher install dideler/fish-cd-git
 ```
 
-Optional: Set your preferred location for the `github.com` directory (default is `$HOME`)
+**Optional:** Set your preferred location for the `github.com` directory (default is `$HOME`)  
+For example, to use `~/src/github.com` instead of `~/github.com`
 ```
 set --erase GH_BASE_DIR
 set --universal GH_BASE_DIR $HOME/src
