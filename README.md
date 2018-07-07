@@ -14,19 +14,19 @@ A super handy repository navigator for the [fish shell][].
 ## Quick start
 
 Install with your favourite fish package manager, such as [fisherman][]
-```
+```fish
 fisher install dideler/fish-cd-git
 ```
 
 **Optional:** Set your preferred location for the `github.com` directory (default is `$HOME`)  
 For example, to use `~/src/github.com` instead of `~/github.com`
-```
+```fish
 set --erase GH_BASE_DIR
 set --universal GH_BASE_DIR $HOME/src
 ```
 
 Navigate to any GitHub-hosted repository :sparkles:
-```
+```fish
 gh dideler dotfiles
 ```
 
