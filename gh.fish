@@ -62,15 +62,20 @@ function $gh_cmd_name -d "Navigate to cloned repos from $gh_git_host" -a user re
 end
 
 function __gh_cd_git_repo --argument git_host user repo
-  set -l path $GH_BASE_DIR/$git_host/$user/$repo
+  set --local path $GH_BASE_DIR/$git_host/$user/$repo
 
   __gh_clone_repo_if_missing $path $git_host $user $repo
   and cd $path
 end
 
 function __gh_clone_repo_if_missing --argument path git_host user repo
-  # TODO: `command git` once we can test it: https://github.com/fisherman/mock/issues/4
-  test -d $path; or git clone -q git@$git_host:$user/$repo.git $path
+  # TODO: Use `command git` once we can test it: https://github.com/fisherman/mock/issues/4
+  if not test -d $path
+    set --local spinner_msg " @ cloning\r"
+    set --local git_url "git@$git_host:$user/$repo.git"
+    set --local clone_cmd "git clone --quiet $git_url $path"
+    spin --format $spinner_msg $clone_cmd
+  end
 end
 
 # Returns "user" "repo" list when given " user/repo " as input.
