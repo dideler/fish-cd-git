@@ -1,6 +1,3 @@
-# TODO: set common vars top-level or top-level gh func
-#       and use function -S/--no-scope-shadowing to inherit vars
-#       instead of making them global or parameters
 function __gh_setup
   set --query GH_BASE_DIR
   or set --universal GH_BASE_DIR $HOME
