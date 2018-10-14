@@ -17,9 +17,16 @@ A super handy repository navigator for the [fish shell][].
 
 ## Quick start
 
-Install with your favourite fish package manager, such as [fisherman][]
+Install with your favourite fish package manager, such as [fisherman][] or [oh-my-fish][omf]
 ```fish
+# Install with fisher v3
+fisher add dideler/fish-cd-git
+
+# Install with fisher v2
 fisher install dideler/fish-cd-git
+
+# Install with oh-my-fish
+omf install https://github.com/dideler/fish-cd-git
 ```
 
 **Optional:** Set your preferred location for the `github.com` directory (default is `$HOME`)  
@@ -36,3 +43,4 @@ gh dideler dotfiles
 
 [fish shell]: https://fishshell.com/
 [fisherman]: https://github.com/fisherman/fisherman
+[omf]: https://github.com/oh-my-fish/oh-my-fish
