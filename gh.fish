@@ -8,15 +8,18 @@ function __gh_setup
 end
 
 function __gh_print_usage
-  printf "Usage: $gh_cmd_name [OPTION] USER REPO\n\n"
-  printf "Description:\n"
-  printf "    Quickly navigate across git repositories cloned from GitHub.\n"
-  printf "    Searches within $GH_BASE_DIR/$gh_git_host/. Clones repo if not found.\n\n"
-  printf "Examples:\n"
-  printf "    $gh_cmd_name dideler fish-cd-git\n\n"
-  printf "Options:\n"
-  printf "    -h, --help      Prints help information\n"
-  printf "    -v, --version   Prints the $gh_cmd_name version\n"
+  echo "Usage: $gh_cmd_name [OPTION] USER REPO"
+  echo
+  echo "Description:"
+  echo "    Quickly navigate across git repositories cloned from GitHub."
+  echo "    Searches within $GH_BASE_DIR/$gh_git_host/. Clones repo if not found."
+  echo
+  echo "Examples:"
+  echo "    $gh_cmd_name dideler fish-cd-git"
+  echo
+  echo "Options:"
+  echo "    -h, --help      Prints help information"
+  echo "    -v, --version   Prints the $gh_cmd_name version"
 end
 
 function __gh_print_version
