@@ -5,4 +5,4 @@ dependencies:
     - curl -sLo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 test:
   override:
-    - fish -c "fisher add < fishfile; fishtape test/*.fish"
+    - fish -c "fisher add < fishfile . && fishtape test/*.fish"
