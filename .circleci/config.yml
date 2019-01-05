@@ -1,1 +1,10 @@
 version: 2
+jobs:
+  build:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+      - run: echo "hello world"
+      - run: pwd
+      - run: ls
