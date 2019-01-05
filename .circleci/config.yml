@@ -5,6 +5,7 @@ jobs:
       - image: ubuntu:latest
     steps:
       - checkout
-      - run: echo "hello world"
-      - run: pwd
-      - run: ls
+      - run: sudo add-apt-repository --yes ppa:fish-shell/release-3
+      - run: sudo apt-get --quiet update
+      - run: sudo apt-get install --quiet --yes fish
+      - run: curl --silent git.io/fisher --output ~/.config/fish/functions/fisher.fish
