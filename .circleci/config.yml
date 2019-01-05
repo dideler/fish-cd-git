@@ -6,8 +6,7 @@ jobs:
     steps:
       - checkout
       - run: apt-get --quiet update
-      - run: apt-get --quiet --yes install software-properties-common
+      - run: apt-get --quiet --yes install software-properties-common curl
       - run: add-apt-repository --yes ppa:fish-shell/release-3
       - run: apt-get --quiet --yes install fish
-      - run: wget git.io/fisher -O ~/.config/fish/functions/fisher.fish
       - run: curl --silent git.io/fisher --output ~/.config/fish/functions/fisher.fish
