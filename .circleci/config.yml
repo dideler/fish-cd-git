@@ -10,5 +10,4 @@ jobs:
       - run: add-apt-repository --yes ppa:fish-shell/release-3
       - run: apt-get --quiet --yes install fish
       - run: curl -sLo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-      - run: fish -c "fisher add < fishfile & fisher add . && fishtape test/*.fish"
-
+      - run: fish -c "fisher add < fishfile & fisher add . && fisher ls && fishtape test/*.fish"
