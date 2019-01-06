@@ -1,4 +1,5 @@
 version: 2
+
 jobs:
   build:
     docker:
@@ -31,3 +32,11 @@ jobs:
     steps:
       - checkout
       - run: fish -c "fishtape test/*.fish"
+
+workflows:
+  build-and-test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
