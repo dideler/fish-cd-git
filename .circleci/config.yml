@@ -5,9 +5,12 @@ jobs:
       - image: ubuntu:latest
     steps:
       - checkout
-      - run: apt-get --quiet update
-      - run: apt-get --quiet --yes install software-properties-common curl
-      - run: add-apt-repository --yes ppa:fish-shell/release-3
-      - run: apt-get --quiet --yes install fish
+      - run:
+        name: Install fish
+        command: |
+          apt-get --quiet update
+          apt-get --quiet --yes install software-properties-common curl
+          add-apt-repository --yes ppa:fish-shell/release-3
+          apt-get --quiet --yes install fish
       - run: curl -sLo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
       - run: fish -c "fisher add < fishfile & fisher add . && fisher ls && fishtape test/*.fish"
