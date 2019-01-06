@@ -26,6 +26,6 @@ jobs:
           command: |
             fisher add < fishfile
             fisher ls
-            fisher add (pwd)
+            fisher add .
             fisher ls
       - run: fish -c "fishtape test/*.fish"
