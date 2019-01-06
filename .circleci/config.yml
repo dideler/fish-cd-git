@@ -3,28 +3,21 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu:latest
+      - image: dideler/fish-shell:3.0.0
+    shell: fish
     steps:
       - checkout
       - run:
-          name: Install fish
-          command: |
-            apt-get --quiet update
-            apt-get --quiet --yes install software-properties-common curl
-            add-apt-repository --yes ppa:fish-shell/release-3
-            apt-get --quiet --yes install fish
-            fish --version
-      - run:
           name: Install fisher
-          shell: fish
           command: |
+            apt-get install --yes --quiet curl
             curl -sLo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
             fisher version
-          path: ~/fish-cd-git
       - run:
           name: Install gh
-          shell: fish
           command: |
             fisher add < fishfile
             fisher add (pwd)
-      - run: fish -c "fishtape test/*.fish"
+      - run:
+          name: Run tests
+          command: fishtape test/*.fish
