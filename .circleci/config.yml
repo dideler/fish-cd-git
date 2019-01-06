@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: ubuntu:latest
     steps:
+      - checkout
       - run:
           name: Install fish
           command: |
@@ -19,13 +20,11 @@ jobs:
           command: |
             curl -sLo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
             fisher version
-      - checkout:
           path: ~/fish-cd-git
       - run:
-          name: Install gh and its dependencies
+          name: Install gh
           shell: fish
           command: |
             fisher add < fishfile
             fisher add (pwd)
-            fisher ls
       - run: fish -c "fishtape test/*.fish"
