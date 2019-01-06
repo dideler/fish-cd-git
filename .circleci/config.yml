@@ -34,6 +34,7 @@ jobs:
       - run: fish -c "fishtape test/*.fish"
 
 workflows:
+  version: 2
   build-and-test:
     jobs:
       - build
