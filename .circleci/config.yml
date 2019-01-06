@@ -15,7 +15,7 @@ jobs:
             fish --version
       - run:
           name: Install fisher
-          shell: /bin/bash -o errexit -o pipefail -o xtrace
+          shell: fish
           command: |
             curl -sLo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
             fisher version
