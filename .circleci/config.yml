@@ -19,4 +19,9 @@ jobs:
           command: |
             curl -sLo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
             fisher version
-      - run: fish -c "fisher add < fishfile & fisher add . && fisher ls && fishtape test/*.fish"
+      - run:
+          name: Install dependencies
+          shell: fish
+          command: |
+            fisher add < fishfile
+            fisher ls
