@@ -26,18 +26,4 @@ jobs:
           command: |
             fisher add < fishfile
             fisher ls
-  test:
-    docker:
-      - image: ubuntu:latest
-    steps:
-      - checkout
       - run: fish -c "fishtape test/*.fish"
-
-workflows:
-  version: 2
-  build-and-test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
