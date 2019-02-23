@@ -10,6 +10,7 @@ jobs:
       - run:
           name: Install fisher
           command: |
+            apt-get update --quiet
             apt-get install --yes --quiet curl
             curl -sLo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
             fisher version
