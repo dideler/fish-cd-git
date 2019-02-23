@@ -13,7 +13,7 @@ jobs:
             apt-get update --quiet
             apt-get install --yes --quiet curl
             curl -sLo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-            fisher version
+            fisher --version
       - run:
           name: Install gh
           command: |
